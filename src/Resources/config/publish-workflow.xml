@@ -6,10 +6,11 @@
 
     <services>
 
+        <service id="cmf_core.publish_workflow.access_decision_strategy" class="Symfony\Component\Security\Core\Authorization\Strategy\UnanimousStrategy">
+
         <service id="cmf_core.publish_workflow.access_decision_manager" class="Symfony\Component\Security\Core\Authorization\AccessDecisionManager">
             <argument type="collection"/>
-            <argument>unanimous</argument>
-            <argument>true</argument>
+            <argument type="service" id="cmf_core.publish_workflow.access_decision_strategy"/>
         </service>
 
         <service id="cmf_core.publish_workflow.checker.default" class="Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishWorkflowChecker">
